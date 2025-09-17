@@ -1,0 +1,5 @@
+/* Stili globali minimi. La maggior parte degli stili è gestita da styled-components in App.tsx */
+body {
+  margin: 0;
+  padding: 0;
+}
