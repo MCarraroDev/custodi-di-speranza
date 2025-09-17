@@ -14,7 +14,7 @@ export interface PageData {
 
 export const pages: Record<string, PageData> = {
     home: {
-        title: 'CUSTODI DI SPERANZA',
+        title: 'Custodi di Speranza',
         subtitle: 'L\'Istituto Pavoni <i>"puro e disposto a salire a le stelle"</i>',
         imageUrl: canto_uno,
         imageAlt: 'Raffigurazione di Gabriele Dell\'Otto',

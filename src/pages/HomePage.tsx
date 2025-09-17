@@ -3,9 +3,17 @@ import { pages } from '../data/pageData';
 import AnimatedSection from '../components/Animated/AnimatedSection';
 import TextBlock from '../components/common/TextBlock';
 import AnimatedTitle from '../components/Animated/AnimatedTitle';
-import centocanti from '../assets/logo/ufficial/centocanti.png';
-import chiesaverona from '../assets/logo/ufficial/LOGO_CHIESA_VERONA-verticale.png';
-import rivela from '../assets/logo/ufficial/LOGO_RIVELA-removebg-preview.png';
+import centocanti from '../assets/logo/official/centocanti.png';
+import chiesaverona from '../assets/logo/official/LOGO_CHIESA_VERONA-verticale.png';
+import rivela from '../assets/logo/official/LOGO_RIVELA-removebg-preview.png';
+import { Link } from 'react-router-dom';
+import { buttonStyles } from '../styles/shared';
+import styled from 'styled-components';
+
+
+const PrenotaButton = styled.a`
+	${buttonStyles}
+`;
 
 const HomePage = () => {
 	return (
@@ -43,9 +51,9 @@ const HomePage = () => {
 					</>
 				)}
 			</AnimatedSection>
-			{/* New sponsor logos section inserted below 'Il Mio Purgatorio - Dante profeta di Speranza' */}
+			{/* Sponsor */}
 			<AnimatedSection>
-				{(isVisible) => (
+				{() => (
 					<>
 						<div
 							style={{
@@ -53,24 +61,33 @@ const HomePage = () => {
 								justifyContent: 'center',
 								alignItems: 'center',
 								gap: '1rem',
-								margin: '1rem 0',
+								margin: '-6rem 0',
 							}}
 						>
-							<img
-								src={centocanti}
-								alt='Centocanti'
-								style={{ maxWidth: '100px' }}
-							/>
-							<img
-								src={chiesaverona}
-								alt='Chiesa Verona'
-								style={{ maxWidth: '100px' }}
-							/>
-							<img
-								src={rivela}
-								alt='Rivela'
-								style={{ maxWidth: '100px' }}
-							/>
+							<Link to="https://www.franconembrini.it/centocanti/" target="_blank" rel="noopener noreferrer">
+								<img
+									src={centocanti}
+									alt='Centocanti'
+									className="sponsor-logo"
+									style={{ height: '100px', width: 'auto' }}
+								/>
+							</Link>
+							<Link to="https://www.chiesadiverona.it/" target="_blank" rel="noopener noreferrer">
+								<img
+									src={chiesaverona}
+									alt='Chiesa Verona'
+									className="sponsor-logo"
+									style={{ height: '100px', width: 'auto' }}
+								/>
+							</Link>
+							<Link to="https://www.rivela.org/" target="_blank" rel="noopener noreferrer">
+								<img
+									src={rivela}
+									alt='Rivela'
+									className="sponsor-logo"
+									style={{ height: '100px', width: 'auto' }}
+								/>
+							</Link>
 						</div>
 					</>
 				)}
@@ -89,22 +106,14 @@ const HomePage = () => {
 							<br />
 							Prenotazioni da fine settembre.
 						</TextBlock>
-						<a
-							href='https://example.com'
+						<br></br>
+						<PrenotaButton
+							href="example.com"
 							target='_blank'
 							rel='noopener noreferrer'
-							style={{
-								display: 'inline-block',
-								marginTop: '1rem',
-								padding: '0.5rem 1rem',
-								backgroundColor: '#007bff',
-								color: '#fff',
-								borderRadius: '4px',
-								textDecoration: 'none',
-							}}
 						>
-							Scopri di più
-						</a>
+									Prenota ora
+						</PrenotaButton>
 					</>
 				)}
 			</AnimatedSection>

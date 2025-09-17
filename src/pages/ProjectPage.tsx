@@ -3,8 +3,8 @@ import { pages } from '../data/pageData';
 import AnimatedSection from '../components/Animated/AnimatedSection';
 import TextBlock from '../components/common/TextBlock';
 import AnimatedTitle from '../components/Animated/AnimatedTitle';
-import Masonry from '../components/Masonry/Masonry';
-import { masonryImages } from '../data/masonryImages.ts'; 
+import SplideSection from '../components/SplideSection';
+import { masonryImages } from '../data/masonryImages.ts';
 
 const ProjectPage = () => {
 	return (
@@ -75,33 +75,7 @@ const ProjectPage = () => {
 							pochi: è sempre un'apertura, una proposta, una possibilità per
 							tutti.
 						</TextBlock>
-						<div style={{
-							position: 'relative',
-							width: '100%',
-							overflow: 'visible',
-							margin: '20px 0 10px',
-							padding: 0,
-							zIndex: 1,
-							background: 'transparent',
-						}}>
-							<div style={{
-								position: 'relative',
-								width: '100%',
-								maxWidth: '1200px',
-								margin: '0 auto',
-								padding: '0 20px',
-							}}>
-								<Masonry
-									items={masonryImages}
-									animateFrom="bottom"
-									duration={0.8}
-									stagger={0.05}
-									scaleOnHover={true}
-									hoverScale={0.95}
-									colorShiftOnHover={true}
-								/>
-							</div>
-						</div>
+						<SplideSection images={masonryImages} />
 					</>
 				)}
 			</AnimatedSection>

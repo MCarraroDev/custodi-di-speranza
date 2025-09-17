@@ -9,4 +9,5 @@ export const navLinks: NavLink[] = [
     { label: 'Dicono di noi', path: '/dicono-di-noi' },
     { label: 'Sponsorizzazioni', path: '/sponsor' },
     { label: 'Dove Siamo', path: '/dove-siamo' },
+    { label: 'Sito ufficiale', path: 'https://danteprofetadisperanza.it/', }
 ];

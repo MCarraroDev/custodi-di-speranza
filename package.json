@@ -6,11 +6,15 @@
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc -b && vite build",
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d dist",
 		"lint": "eslint .",
 		"preview": "vite preview",
 		"build:registry": "jsrepo build"
 	},
 	"dependencies": {
+		"@splidejs/react-splide": "^0.7.12",
+		"@splidejs/splide-extension-auto-scroll": "^0.5.3",
 		"@types/leaflet": "^1.9.18",
 		"@types/styled-components": "^5.1.34",
 		"framer-motion": "^12.17.3",
@@ -36,6 +40,7 @@
 		"jsrepo": "^2.4.0",
 		"typescript": "~5.8.3",
 		"typescript-eslint": "^8.30.1",
+		"gh-pages": "^5.0.0",
 		"vite": "^6.3.5"
 	}
 }
