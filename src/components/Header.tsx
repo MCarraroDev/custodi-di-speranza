@@ -87,6 +87,42 @@ const NavLink = styled(RouterNavLink)`
   }
 `;
 
+// Anchor styled the same as NavLink for external links
+const ExternalAnchor = styled.a`
+  color: ${(props) => props.theme.colors.text.light};
+  text-decoration: none;
+  margin: 0 20px;
+  font-size: ${(props) => props.theme.fontSizes.medium};
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: ${(props) => props.theme.colors.primary};
+    bottom: -5px;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-out;
+  }
+
+  &:hover {
+    color: ${(props) => props.theme.colors.primary};
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+
+  @media (max-width: 1200px) {
+    margin: 20px 0;
+    font-size: 1.8rem;
+  }
+`;
+
 // Hamburger and close icon for mobile menu
 const HamburgerIcon = styled.div`
   display: none; // Hidden by default on desktop
@@ -134,9 +170,15 @@ const Header = () => {
       {/* Desktop Navigation */}
       <NavLinksContainer>
         {navLinks.map((link) => (
-          <NavLink key={link.path} to={link.path}>
-            {link.label}
-          </NavLink>
+          link.path.startsWith('http') ? (
+            <ExternalAnchor key={link.path} href={link.path} target="_blank" rel="noopener noreferrer">
+              {link.label}
+            </ExternalAnchor>
+          ) : (
+            <NavLink key={link.path} to={link.path}>
+              {link.label}
+            </NavLink>
+          )
         ))}
       </NavLinksContainer>
 
@@ -148,9 +190,15 @@ const Header = () => {
       {/* Mobile Navigation Menu */}
       <MobileMenu isOpen={isMenuOpen}>
         {navLinks.map((link) => (
-          <NavLink key={link.path} to={link.path} onClick={toggleMenu}>
-            {link.label}
-          </NavLink>
+          link.path.startsWith('http') ? (
+            <ExternalAnchor key={link.path} href={link.path} target="_blank" rel="noopener noreferrer" onClick={toggleMenu}>
+              {link.label}
+            </ExternalAnchor>
+          ) : (
+            <NavLink key={link.path} to={link.path} onClick={toggleMenu}>
+              {link.label}
+            </NavLink>
+          )
         ))}
       </MobileMenu>
     </HeaderContainer>

@@ -108,11 +108,11 @@ const HomePage = () => {
 						</TextBlock>
 						<br></br>
 						<PrenotaButton
-							href="example.com"
-							target='_blank'
-							rel='noopener noreferrer'
+							href="https://example.com"
+							target="_blank"
+							rel="noopener noreferrer"
 						>
-									Prenota ora
+							Prenota ora
 						</PrenotaButton>
 					</>
 				)}
