@@ -2,6 +2,7 @@ import React from 'react';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
 import '@splidejs/splide/css';
+import FadeContainer from './FadeContainer';
 
 type ImageItem = {
 	src?: string;
@@ -16,7 +17,7 @@ type Props = {
 	fit?: 'cover' | 'contain';
 	options?: any;
 	fullWidth?: boolean;
-		widthVw?: number; // width in vw when not fullWidth (default 70)
+	widthVw?: number; // width in vw when not fullWidth (default 70)
 };
 
 const SplideSection: React.FC<Props> = ({
@@ -29,7 +30,9 @@ const SplideSection: React.FC<Props> = ({
 	widthVw = 70,
 }) => {
 	// normalize to string URLs
-	const normalized: string[] = (images as any[]).map((it) => (typeof it === 'string' ? it : it.src || it.img || ''));
+	const normalized: string[] = (images as any[]).map((it) =>
+		typeof it === 'string' ? it : it.src || it.img || ''
+	);
 
 	const shuffleArray = (arr: string[]) => {
 		const a = arr.slice();
@@ -81,6 +84,20 @@ const SplideSection: React.FC<Props> = ({
 		perPage: 3,
 		perMove: 1,
 		gap: '1rem',
+		breakpoints: {
+			640: {
+				perPage: 1,
+				gap: '0.5rem',
+			},
+			900: {
+				perPage: 2,
+				gap: '0.75rem',
+			},
+			1200: {
+				perPage: 3,
+				gap: '1rem',
+			},
+		},
 		arrows: false,
 		pagination: false,
 		autoScroll: {
@@ -103,50 +120,79 @@ const SplideSection: React.FC<Props> = ({
 
 	const innerStyle: React.CSSProperties = fullWidth
 		? { width: '100vw', marginLeft: 'calc(50% - 50vw)', padding: 0 }
-		: { width: `${widthVw}vw`, margin: '0 auto', padding: '0 0', position: 'relative' };
+		: {
+				width: `${widthVw}vw`,
+				margin: '0 auto',
+				padding: '0 0',
+				position: 'relative',
+			};
 
 	return (
-		<div style={outerStyle}>
-			<div style={innerStyle}>
-				{fullWidth ? (
-					<div style={{ width: '100vw', marginLeft: 'calc(50% - 50vw)', position: 'relative' }}>
-						<Splide options={options} extensions={{ AutoScroll }} aria-label="Gallery">
-							{list.map((src, i) => (
-								<SplideSlide key={i}>
-									<div style={{ minWidth: 220 }}>
-										<img
-											src={src}
-											alt={`slide-${i}`}
-											style={{ width: '100%', height: height, objectFit: fit, display: 'block', borderRadius: 6 }}
-										/>
-									</div>
-								</SplideSlide>
-							))}
-						</Splide>
-
-
-					</div>
-				) : (
-					<div style={{ position: 'relative' }}>
-						<Splide options={options} extensions={{ AutoScroll }} aria-label="Gallery">
-							{list.map((src, i) => (
-								<SplideSlide key={i}>
-									<div style={{ minWidth: 220 }}>
-										<img
-											src={src}
-											alt={`slide-${i}`}
-											style={{ width: '100%', height: height, objectFit: fit, display: 'block', borderRadius: 6 }}
-										/>
-									</div>
-								</SplideSlide>
-							))}
-						</Splide>
-
-
-					</div>
-				)}
+		<FadeContainer>
+			<div style={outerStyle}>
+				<div style={innerStyle}>
+					{fullWidth ? (
+						<div
+							style={{
+								width: '100vw',
+								marginLeft: 'calc(50% - 50vw)',
+								position: 'relative',
+							}}
+						>
+							<Splide
+								options={options}
+								extensions={{ AutoScroll }}
+								aria-label='Gallery'
+							>
+								{list.map((src, i) => (
+									<SplideSlide key={i}>
+										<div style={{ width: '100%' }}>
+											<img
+												src={src}
+												alt={`slide-${i}`}
+												style={{
+													width: '100%',
+													height: height,
+													objectFit: fit,
+													display: 'block',
+													borderRadius: 6,
+												}}
+											/>
+										</div>
+									</SplideSlide>
+								))}
+							</Splide>
+						</div>
+					) : (
+						<div style={{ position: 'relative' }}>
+							<Splide
+								options={options}
+								extensions={{ AutoScroll }}
+								aria-label='Gallery'
+							>
+								{list.map((src, i) => (
+									<SplideSlide key={i}>
+										<div style={{ width: '100%' }}>
+											<img
+												src={src}
+												alt={`slide-${i}`}
+												style={{
+													width: '100%',
+													height: height,
+													objectFit: fit,
+													display: 'block',
+													borderRadius: 6,
+												}}
+											/>
+										</div>
+									</SplideSlide>
+								))}
+							</Splide>
+						</div>
+					)}
+				</div>
 			</div>
-		</div>
+		</FadeContainer>
 	);
 };
 
