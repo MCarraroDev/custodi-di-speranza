@@ -3,3 +3,19 @@ body {
   margin: 0;
   padding: 0;
 }
+
+/* Utility: temporarily hide horizontal scroll when a carousel needs full-bleed or controlled centering */
+.no-scroll-x, html.no-scroll-x {
+  overflow-x: hidden !important;
+}
+
+/* Hide WebKit horizontal scrollbar when hiding overflow (touch-friendly) */
+html.no-scroll-x::-webkit-scrollbar {
+  height: 0;
+  width: 0;
+}
+
+/* Ensure the fade overlays blend with the page background; adjust as needed */
+body {
+  background: #fff;
+}

@@ -4,7 +4,7 @@ import AnimatedSection from '../components/Animated/AnimatedSection';
 import TextBlock from '../components/common/TextBlock';
 import AnimatedTitle from '../components/Animated/AnimatedTitle';
 import SplideSection from '../components/SplideSection';
-import { masonryImages } from '../data/masonryImages.ts';
+import { tgiudImages } from '../data/tgiudImages';
 
 const ProjectPage = () => {
 	return (
@@ -33,6 +33,7 @@ const ProjectPage = () => {
 							un cammino non privo di ostacoli, ma attraversato dal desiderio di
 							ricominciare, di non restare schiacciati dal male o dal passato.
 						</TextBlock>
+						<SplideSection images={tgiudImages} shuffle={true} fullWidth/>
 					</>
 				)}
 			</AnimatedSection>
@@ -50,8 +51,10 @@ const ProjectPage = () => {
 							del presente che torna ad avere valore. È la risposta alla domanda
 							che ci abita tutti: possiamo davvero ricominciare?
 						</TextBlock>
+						<SplideSection images={tgiudImages} shuffle={true} fullWidth/>
 					</>
 				)}
+				
 			</AnimatedSection>
 
 			<AnimatedSection>
@@ -75,7 +78,7 @@ const ProjectPage = () => {
 							pochi: è sempre un'apertura, una proposta, una possibilità per
 							tutti.
 						</TextBlock>
-						<SplideSection images={masonryImages} />
+						<SplideSection images={tgiudImages} shuffle={true} fullWidth/>
 					</>
 				)}
 			</AnimatedSection>
@@ -108,6 +111,7 @@ const ProjectPage = () => {
 							l’educazione è davvero, come diceva Dante, il luogo dove imparare
 							a diventare liberi.
 						</TextBlock>
+						<SplideSection images={tgiudImages} shuffle={true} fullWidth/>
 					</>
 				)}
 			</AnimatedSection>

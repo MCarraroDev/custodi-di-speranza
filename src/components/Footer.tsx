@@ -4,6 +4,11 @@ import logo from '../assets/logo_ilmiopurgatorio.png';
 import { navLinks } from '../data/navigation';
 import { socialLinks } from '../data/socials';
 
+import centocanti_silhouette from '../assets/logo/silhouette/white/centocanti_silhouette.png'
+import chiesaverona_silhouette from '../assets/logo/silhouette/white/chiesa-verona_silhouette.png'
+import rivela_silhouette from '../assets/logo/silhouette/white/rivela_silhouette.png'
+
+
 // Componente Link personalizzato per scrollare in cima alla pagina
 const ScrollToTopLink: React.FC<LinkProps> = ({ children, ...props }) => {
 	const handleClick = (
@@ -124,8 +129,30 @@ const CopyrightText = styled.p`
 	text-align: center;
 	width: 100%;
 	margin-top: 50px;
-	font-size: 0.8rem;
+	font-size: 0.9rem;
 	color: ${(props) => props.theme.colors.text.secondary};
+`;
+
+const SilhouetteContainer = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 24px;
+	margin-top: 24px;
+	margin-bottom: 8px;
+`;
+
+const SilhouetteImage = styled.img`
+	height: 3.5rem;
+	width: auto;
+	opacity: 0.95;
+`;
+
+const SmallRights = styled.span`
+	display: block;
+	font-size: 0.7rem;
+	color: ${(props) => props.theme.colors.text.secondary};
+	margin-top: 6px;
 `;
 
 const Footer: React.FC = () => {
@@ -181,10 +208,17 @@ const Footer: React.FC = () => {
 				})}
 			</SocialLinksContainer>
 
+			{/* Silhouette logos */}
+			<SilhouetteContainer>
+				<SilhouetteImage src={centocanti_silhouette} alt="Centocanti" />
+				<SilhouetteImage src={chiesaverona_silhouette} alt="Chiesa Verona" />
+				<SilhouetteImage src={rivela_silhouette} alt="Rivela" />
+			</SilhouetteContainer>
+
 			{/* Copyright */}
 			<CopyrightText>
-				© {new Date().getFullYear()} CUSTODI DI SPERANZA. Tutti i diritti
-				Riservati.
+				© {new Date().getFullYear()} CUSTODI DI SPERANZA.
+				<SmallRights>Tutti i diritti Riservati.</SmallRights>
 			</CopyrightText>
 		</FooterContainer>
 	);

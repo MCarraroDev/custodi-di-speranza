@@ -3,13 +3,13 @@ import { pages } from '../data/pageData';
 import AnimatedSection from '../components/Animated/AnimatedSection';
 import TextBlock from '../components/common/TextBlock';
 import AnimatedTitle from '../components/Animated/AnimatedTitle';
-import centocanti from '../assets/logo/official/centocanti.png';
-import chiesaverona from '../assets/logo/official/LOGO_CHIESA_VERONA-verticale.png';
-import rivela from '../assets/logo/official/LOGO_RIVELA-removebg-preview.png';
 import { Link } from 'react-router-dom';
 import { buttonStyles } from '../styles/shared';
 import styled from 'styled-components';
 
+import centocanti from '../assets/logo/official/centocanti.png';
+import chiesaverona from '../assets/logo/official/LOGO_CHIESA_VERONA-verticale.png';
+import rivela from '../assets/logo/official/LOGO_RIVELA-removebg-preview.png';
 
 const PrenotaButton = styled.a`
 	${buttonStyles}

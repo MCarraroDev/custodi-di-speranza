@@ -5,6 +5,11 @@ import AnimatedSection from '../components/Animated/AnimatedSection';
 import TextBlock from '../components/common/TextBlock';
 import AnimatedTitle from '../components/Animated/AnimatedTitle';
 import { FaBullhorn, FaUsers, FaHandshake } from 'react-icons/fa';
+import SplideSection from '../components/SplideSection';
+import pavoniLogo from '../assets/logo/pavoni.png';
+import tradateStemma from '../assets/logo/Tradate-Stemma.png';
+import dtsTransparent from '../assets/logo/dts_trasparente.png';
+import tecnoposaTransparent from '../assets/logo/tecnoposa_trasparente.png';
 
 const BenefitsList = styled.ul`
   list-style: none;
@@ -89,6 +94,8 @@ const SponsorPage = () => {
 						<TextBlock>
 							Per maggiori informazioni o per manifestare il vostro interesse, vi invitiamo a contattare la segreteria amministrativa della scuola (<strong>amministrazione_paolo6@istitutopavoni.it</strong>, tel <strong>0331 841417</strong>).
 						</TextBlock>
+						<SplideSection images={[pavoniLogo, tradateStemma, dtsTransparent, tecnoposaTransparent]} height={120} fit="contain" fullWidth />
+						<br></br>
 					</>
 				)}
 			</AnimatedSection>
