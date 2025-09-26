@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.custodidisperanza.com/</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.custodidisperanza.com/location</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.custodidisperanza.com/press</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.custodidisperanza.com/project</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.custodidisperanza.com/sponsor</loc>
+    <priority>0.6</priority>
+  </url>
+</urlset>
