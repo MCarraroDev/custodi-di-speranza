@@ -4,16 +4,13 @@ import AnimatedSection from '../components/Animated/AnimatedSection';
 import TextBlock from '../components/common/TextBlock';
 import AnimatedTitle from '../components/Animated/AnimatedTitle';
 import { Link } from 'react-router-dom';
-import { buttonStyles } from '../styles/shared';
-import styled from 'styled-components';
+import TicketTailorWidget from '../components/TicketTailorWidget';
 
 import centocanti from '../assets/logo/official/centocanti.png';
 import chiesaverona from '../assets/logo/official/LOGO_CHIESA_VERONA-verticale.png';
 import rivela from '../assets/logo/official/LOGO_RIVELA-removebg-preview.png';
 
-const PrenotaButton = styled.a`
-	${buttonStyles}
-`;
+
 
 const HomePage = () => {
 	return (
@@ -64,27 +61,39 @@ const HomePage = () => {
 								margin: '-6rem 0',
 							}}
 						>
-							<Link to="https://www.franconembrini.it/centocanti/" target="_blank" rel="noopener noreferrer">
+							<Link
+								to='https://www.franconembrini.it/centocanti/'
+								target='_blank'
+								rel='noopener noreferrer'
+							>
 								<img
 									src={centocanti}
 									alt='Centocanti'
-									className="sponsor-logo"
+									className='sponsor-logo'
 									style={{ height: '100px', width: 'auto' }}
 								/>
 							</Link>
-							<Link to="https://www.chiesadiverona.it/" target="_blank" rel="noopener noreferrer">
+							<Link
+								to='https://www.chiesadiverona.it/'
+								target='_blank'
+								rel='noopener noreferrer'
+							>
 								<img
 									src={chiesaverona}
 									alt='Chiesa Verona'
-									className="sponsor-logo"
+									className='sponsor-logo'
 									style={{ height: '100px', width: 'auto' }}
 								/>
 							</Link>
-							<Link to="https://www.rivela.org/" target="_blank" rel="noopener noreferrer">
+							<Link
+								to='https://www.rivela.org/'
+								target='_blank'
+								rel='noopener noreferrer'
+							>
 								<img
 									src={rivela}
 									alt='Rivela'
-									className="sponsor-logo"
+									className='sponsor-logo'
 									style={{ height: '100px', width: 'auto' }}
 								/>
 							</Link>
@@ -104,16 +113,9 @@ const HomePage = () => {
 							<br />
 							Ingresso gratuito.
 							<br />
-							Prenotazioni da fine settembre.
 						</TextBlock>
 						<br></br>
-						<PrenotaButton
-							href="https://example.com"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							Prenota ora
-						</PrenotaButton>
+						<TicketTailorWidget />
 					</>
 				)}
 			</AnimatedSection>
