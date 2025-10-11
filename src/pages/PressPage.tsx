@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+import { useState } from 'react';
 import HeroSection from '../components/HeroSection';
 import { pages } from '../data/pageData';
 import AnimatedSection from '../components/Animated/AnimatedSection';
 import TextBlock from '../components/common/TextBlock';
 import AnimatedTitle from '../components/Animated/AnimatedTitle';
-import { FaExternalLinkAlt, FaNewspaper, FaCalendarAlt } from 'react-icons/fa';
+import { FaExternalLinkAlt, FaNewspaper, FaCalendarAlt, FaTimes, FaImage } from 'react-icons/fa';
 
 const IntroSection = styled(AnimatedSection)`
 	padding-bottom: 0px;
@@ -21,7 +22,7 @@ const ArticlesContainer = styled.div`
 	justify-items: center;
 `;
 
-const ArticleCard = styled.a`
+const ArticleCard = styled.div<{ $isClickable: boolean }>`
 	background: white;
 	border-radius: 12px;
 	padding: 30px;
@@ -33,6 +34,7 @@ const ArticleCard = styled.a`
 	flex-direction: column;
 	gap: 15px;
 	border: 2px solid transparent;
+	cursor: ${({ $isClickable }) => $isClickable ? 'pointer' : 'default'};
 
 	&:hover {
 		transform: translateY(-5px);
@@ -80,7 +82,64 @@ const ReadMoreButton = styled.div`
 	font-size: 0.95rem;
 `;
 
+const Modal = styled.div<{ $isOpen: boolean }>`
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.9);
+	display: ${({ $isOpen }) => $isOpen ? 'flex' : 'none'};
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
+	padding: 20px;
+`;
+
+const ModalContent = styled.div`
+	position: relative;
+	max-width: 90%;
+	max-height: 90%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+`;
+
+const ModalImage = styled.img`
+	max-width: 100%;
+	max-height: 90vh;
+	object-fit: contain;
+	border-radius: 8px;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+`;
+
+const CloseButton = styled.button`
+	position: absolute;
+	top: -15px;
+	right: -15px;
+	background: ${({ theme }) => theme.colors.primary};
+	color: white;
+	border: none;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	font-size: 1.2rem;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+	&:hover {
+		background: #007030;
+		transform: scale(1.1);
+	}
+`;
+
 const PressPage = () => {
+	const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
 	const articles = [
 		{
 			title: 'All\'istituto Paolo VI - Istituto Pavoni, al via da sabato una mostra su Dante profeta di speranza nel Purgatorio ',
@@ -95,6 +154,20 @@ const PressPage = () => {
 			url: 'https://www.varesenews.it/2025/10/allistituto-pavoni-di-tradate-il-mio-purgatorio-una-mostra-per-riscoprire-la-speranza-attraverso-dante/'
 		}
 	];
+
+	const isCatboxUrl = (url: string) => url.includes('catbox');
+
+	const handleArticleClick = (article: typeof articles[0]) => {
+		if (isCatboxUrl(article.url)) {
+			setSelectedImage(article.url);
+		} else {
+			window.open(article.url, '_blank', 'noopener,noreferrer');
+		}
+	};
+
+	const closeModal = () => {
+		setSelectedImage(null);
+	};
 
 	return (
 		<div>
@@ -115,40 +188,51 @@ const PressPage = () => {
 					di noi e lasciati ispirare.
 				</TextBlock>
 			</IntroSection>
-
 			<AnimatedSection>
 				{(isVisible) => (
 					<>
 						<AnimatedTitle isVisible={isVisible}>Articoli e Recensioni</AnimatedTitle>
 						<ArticlesContainer>
-							{articles.map((article, index) => (
-								<ArticleCard 
-									key={index}
-									href={article.url}
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									<ArticleTitle>{article.title}</ArticleTitle>
-									<ArticleMeta>
-										<MetaItem>
-											<MetaIcon><FaNewspaper /></MetaIcon>
-											<span>{article.source}</span>
-										</MetaItem>
-										<MetaItem>
-											<MetaIcon><FaCalendarAlt /></MetaIcon>
-											<span>{article.date}</span>
-										</MetaItem>
-									</ArticleMeta>
-									<ReadMoreButton>
-										Leggi l'articolo <FaExternalLinkAlt size={14} />
-									</ReadMoreButton>
-								</ArticleCard>
-							))}
-						</ArticlesContainer>
+						{articles.map((article, index) => (
+							<ArticleCard 
+								key={index}
+								$isClickable={true}
+								onClick={() => handleArticleClick(article)}
+							>
+								<ArticleTitle>{article.title}</ArticleTitle>
+								<ArticleMeta>
+									<MetaItem>
+										<MetaIcon><FaNewspaper /></MetaIcon>
+										<span>{article.source}</span>
+									</MetaItem>
+									<MetaItem>
+										<MetaIcon><FaCalendarAlt /></MetaIcon>
+										<span>{article.date}</span>
+									</MetaItem>
+								</ArticleMeta>
+								<ReadMoreButton>
+									{isCatboxUrl(article.url) ? (
+										<>Visualizza immagine <FaImage size={14} /></>
+									) : (
+										<>Leggi l'articolo <FaExternalLinkAlt size={14} /></>
+									)}
+								</ReadMoreButton>
+							</ArticleCard>
+						))}
+					</ArticlesContainer>
 					</>
 				)}
-			</AnimatedSection>
-		</div>
+		</AnimatedSection>
+
+		<Modal $isOpen={selectedImage !== null} onClick={closeModal}>
+			<ModalContent onClick={(e) => e.stopPropagation()}>
+				{selectedImage && <ModalImage src={selectedImage} alt="Articolo" />}
+				<CloseButton onClick={closeModal}>
+					<FaTimes />
+				</CloseButton>
+			</ModalContent>
+		</Modal>
+	</div>
 	);
 };
 
