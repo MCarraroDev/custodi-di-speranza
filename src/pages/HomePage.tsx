@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import HeroSection from '../components/HeroSection';
 import { pages } from '../data/pageData';
 import AnimatedSection from '../components/Animated/AnimatedSection';
@@ -10,6 +11,27 @@ import centocanti from '../assets/logo/official/centocanti.png';
 import chiesaverona from '../assets/logo/official/LOGO_CHIESA_VERONA-verticale.png';
 import rivela from '../assets/logo/official/LOGO_RIVELA-removebg-preview.png';
 
+const VideoContainer = styled.div`
+	position: relative;
+	width: 100%;
+	max-width: 800px;
+	margin: 0px auto 0;
+	padding-bottom: 56.25%; /* 16:9 aspect ratio */
+	height: 0;
+	overflow: hidden;
+	border-radius: 12px;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+
+	iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border: none;
+		border-radius: 12px;
+	}
+`;
 
 
 const HomePage = () => {
@@ -29,26 +51,34 @@ const HomePage = () => {
 						<AnimatedTitle isVisible={isVisible}>
 							Il Mio Purgatorio - Dante profeta di Speranza
 						</AnimatedTitle>
+						<VideoContainer>
+							<iframe
+								src="https://www.youtube.com/embed/gsEcFhFiLVk"
+								title="Il Mio Purgatorio - Trailer"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+								allowFullScreen
+							/>
+						</VideoContainer>
+						<br></br>
 						<TextBlock>
-							L’ Istituto Pavoni, nell’anno giubilare, sceglie di ospitare la
+							L' Istituto Pavoni, nell'anno giubilare, sceglie di ospitare la
 							mostra itinerante Il mio Purgatorio - Dante profeta di{' '}
 							<b>Speranza </b>
-							dall’11 al 26 ottobre 2025.<br></br>La mostra è un racconto visivo
+							dall'11 al 26 ottobre 2025.<br></br>La mostra è un racconto visivo
 							e narrativo del viaggio di Dante sul monte del Purgatorio: sette
 							balze per ritrovare sé stessi, per scoprire che nulla è perduto,
-							che la misericordia ha sempre l’ultima parola. Questa risalita
-							dell’anima è guidata dalle immagini potenti di Gabriele Dell’Otto
+							che la misericordia ha sempre l'ultima parola. Questa risalita
+							dell'anima è guidata dalle immagini potenti di Gabriele Dell'Otto
 							e dalla voce sapiente del professor Franco Nembrini. A condurvi,
 							saranno gli occhi e il cuore dei nostri ragazzi, testimoni
 							appassionati di una <b>bellezza</b> che parla al presente.
 							<br></br>Prodotta da Rivela, Centocanti e Chiesa di Verona, la
-							mostra è un invito a credere che l’arte e la cultura possano
+							mostra è un invito a credere che l'arte e la cultura possano
 							ancora accendere <b>Speranza</b>.
 						</TextBlock>
 					</>
 				)}
 			</AnimatedSection>
-			{/* Sponsor */}
 			<AnimatedSection>
 				{() => (
 					<>

@@ -3,7 +3,7 @@ import { FaYoutube, FaFacebook, FaInstagram } from 'react-icons/fa';
 export const socialLinks = [
     {
         name: 'YouTube',
-        url: 'https://www.youtube.com/channel/UCODFA5O0fJd7DZLzLoRWPyg',
+        url: 'https://www.youtube.com/@istitutolodovicopavoni-ino6063',
         icon: FaYoutube,
     },
     {
