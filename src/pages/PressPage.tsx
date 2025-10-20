@@ -142,6 +142,18 @@ const PressPage = () => {
 
 	const articles = [
 		{
+			title: 'Varese: Pavoni, giovani “Virgilio” a spasso nel Purgatorio',
+			source: 'Rete55',
+			date: '17 ottobre 2025',
+			url: 'https://www.rete55.it/notizie/attualita/varese-pavoni-giovani-virgilio-a-spasso-nel-purgatorio/'
+		},
+		{
+			title: 'Il Purgatorio in mostra al Pavoni',
+			source: 'Prima Saronno',
+			date: '10 Ottobre 2025',
+			url: 'https://primasaronno.it/tempo-libero/eventi/il-purgatorio-in-mostra-al-pavoni/'
+		},
+		{
 			title: 'All\'istituto Paolo VI - Istituto Pavoni, al via da sabato una mostra su Dante profeta di speranza nel Purgatorio ',
 			source: 'Avvenire',
 			date: '9 Ottobre 2025',
